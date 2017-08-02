@@ -1,0 +1,19 @@
+input {
+    display: none;
+}
+
+.check {
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  border: 1px solid #E0F2F1;
+  background: #FFF url(img/checkmark-icon.png) repeat scroll 0% 0% / cover;
+}
+
+.no-check {
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    background-color: white;
+    border: 1px solid #E0F2F1;
+}

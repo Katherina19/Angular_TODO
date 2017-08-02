@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+
+  <div class="panel">
+    <div class="form-inline">
+      <div class="form-group">
+        <div class="col-md-8">
+          <input
+            #box
+            class="form-control"
+            (keyup.enter)="onTaskAdd(box.value);this.task=''"
+            [(ngModel)]="task" placeholder="Add new task"
+          />
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <button class="btn btn-default btn-filter" (click)="showDone()">
+          <span class="btn-text">Показать выполненные</span>
+        </button>
+        <button class="btn btn-default btn-filter" (click)="showActive()">
+          <span class="btn-text">Показать не выполненные</span>
+        </button>
+        <button class="btn btn-default btn-filter" (click)="showAll()">
+          <span class="btn-text">Показать все</span>
+        </button>
+      </div>
+    </div>
+
+    <ul class="tasks">
+      <li *ngFor="let task of tasks | filterTasks:filterTask; let i = index">
+        <todo-task
+          [task]="task"
+          [editInput]="editInputTask === task.id"
+          (onTaskEdit)="onTaskEdit(task.id, task.task)"
+          (onTaskStartEdit)="onTaskStartEdit(task.id)"
+          (onTaskDelete)="onTaskDelete(task.id)"
+          (onTaskToggle)="onTaskToggle(task.id)"
+        ></todo-task>
+      </li>
+    </ul>
+  </div>
+</div>
